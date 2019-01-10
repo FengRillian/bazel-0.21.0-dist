@@ -23,6 +23,11 @@ constraint_value(
 )
 
 constraint_value(
+    name = "mips64",
+    constraint_setting = ":cpu",
+)
+
+constraint_value(
     name = "arm",
     constraint_setting = ":cpu",
 )
@@ -84,6 +89,7 @@ platform(
         ":x86_64",
         ":ppc",
         ":arm",
+	":mips64",
         ":aarch64",
         ":s390x",
     ],
@@ -105,6 +111,7 @@ platform(
         ":x86_64",
         ":ppc",
         ":arm",
+	":mips64",
         ":aarch64",
         ":s390x",
     ],

@@ -100,6 +100,7 @@ cc_toolchain_suite(
         "arm": ":cc-compiler-local",
         "aarch64": ":cc-compiler-local",
         "s390x": ":cc-compiler-local",
+	"mips64": ":cc-compiler-mips64",
         "ppc": ":cc-compiler-local",
         "ppc64": ":cc-compiler-local",
         "darwin": ":cc-compiler-darwin",
@@ -176,6 +177,34 @@ cc_toolchain(
     supports_param_files = 1,
     toolchain_identifier = "local_linux",
 )
+
+cc_toolchain(
+    name = "cc-compiler-mips64",
+    all_files = ":empty",
+    compiler_files = ":empty",
+    cpu = "mips64",
+    dwp_files = ":empty",
+    dynamic_runtime_libs = [":empty"],
+    linker_files = ":empty",
+    objcopy_files = ":empty",
+    static_runtime_libs = [":empty"],
+    strip_files = ":empty",
+    supports_param_files = 1,
+    toolchain_identifier = "local_mips64",
+)
+
+toolchain(
+    name = "cc-toolchain-mips64",
+    exec_compatible_with = [
+        "@bazel_tools//platforms:mips64",
+    ],
+    target_compatible_with = [
+        "@bazel_tools//platforms:mips64",
+    ],
+    toolchain = ":cc-compiler-mips64",
+    toolchain_type = ":toolchain_type",
+)
+
 
 toolchain(
     name = "cc-toolchain-armeabi-v7a",

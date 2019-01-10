@@ -22,10 +22,10 @@
 #include <stdint.h>
 #include <string.h>
 
-#ifdef _WIN32
+#ifdef COMPILER_MSVC
 #define PATH_MAX 4096
 typedef int mode_t;
-#endif  // _WIN32
+#endif  // COMPILER_MSVC
 
 namespace devtools_ijar {
 

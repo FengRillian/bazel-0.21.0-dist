@@ -100,17 +100,17 @@ filegroup(
     ],
 )
 
-py_library(
-    name = "create_embedded_tools_lib",
-    srcs = ["create_embedded_tools_lib.py"],
-    visibility = ["//:__pkg__"],
-)
+#py_library(
+#    name = "create_embedded_tools_lib",
+#    srcs = ["create_embedded_tools_lib.py"],
+#    visibility = ["//:__pkg__"],
+#)
 
-py_binary(
-    name = "create_embedded_tools",
-    srcs = ["create_embedded_tools.py"],
-    deps = [":create_embedded_tools_lib"],
-)
+#py_binary(
+#    name = "create_embedded_tools",
+#    srcs = ["create_embedded_tools.py"],
+#    deps = [":create_embedded_tools_lib"],
+#)
 
 # TODO(philwo): Clean this up, once a Bazel that can run py_binary and sh_binary
 # in Skylark rules on Windows has been released.
@@ -131,9 +131,9 @@ py_binary(
         "//src/java_tools/buildjar/java/com/google/devtools/build/buildjar/jarhelper:srcs",
         "//src/tools/android/java/com/google/devtools/build/android:embedded_tools",
         "//src/tools/launcher:srcs",
-        "//src/tools/singlejar:embedded_tools",
+        #"//src/tools/singlejar:embedded_tools",
         "//src/main/cpp/util:embedded_tools",
-        "//src/main/native:embedded_tools",
+        #"//src/main/native:embedded_tools",
         "//src/main/protobuf:srcs",
         "//src/java_tools/buildjar:JavaBuilderDeploy",
         "//src/java_tools/buildjar:VanillaJavaBuilder_deploy.jar",
@@ -142,14 +142,14 @@ py_binary(
         "//src/java_tools/junitrunner/java/com/google/testing/junit/runner:Runner_deploy.jar",
         "//src/java_tools/junitrunner/java/com/google/testing/junit/runner:ExperimentalRunner_deploy.jar",
         "//src/java_tools/junitrunner/java/com/google/testing/coverage:embedded_tools",
-        "//third_party/def_parser:srcs",
+        #"//third_party/def_parser:srcs",
         "//third_party/ijar",
-        "//third_party/ijar:zipper",
-        "//third_party/ijar:embedded_tools",
+        #"//third_party/ijar:zipper",
+        #"//third_party/ijar:embedded_tools",
         "//src/java_tools/buildjar/java/com/google/devtools/build/java/turbine:turbine_direct",
         "//src/java_tools/buildjar/java/com/google/devtools/build/java/turbine/javac:turbine_deploy.jar",
         "//third_party/java/jacoco:srcs",
-        "//third_party/zlib:embedded_tools",
+        #"//third_party/zlib:embedded_tools",
     ] + select({
         "//src/conditions:darwin": [
             ":darwin_tools",
@@ -230,8 +230,10 @@ genrule(
         ":embedded_tools_srcs",
     ],
     outs = ["embedded_tools.zip"],
-    cmd = "$(location :create_embedded_tools) \"$@\" $(location :embedded_tools_params)",
-    tools = [":create_embedded_tools"],
+#    cmd = "$(location :create_embedded_tools) \"$@\" $(location :embedded_tools_params)",
+#    tools = [":create_embedded_tools"],
+    cmd = "$(location :create_embedded_tools.sh) $@ $(SRCS)",
+    tools = [":create_embedded_tools.sh"],
 )
 
 genrule(
@@ -241,8 +243,10 @@ genrule(
         ":embedded_tools_nojdk_srcs",
     ],
     outs = ["embedded_tools_nojdk.zip"],
-    cmd = "$(location :create_embedded_tools) \"$@\" $(location :embedded_tools_nojdk_params)",
-    tools = [":create_embedded_tools"],
+#    cmd = "$(location :create_embedded_tools) \"$@\" $(location :embedded_tools_nojdk_params)",
+#    tools = [":create_embedded_tools"],
+    cmd = "$(location :create_embedded_tools.sh) $@ $(SRCS)",
+    tools = [":create_embedded_tools.sh"],
 )
 
 [genrule(

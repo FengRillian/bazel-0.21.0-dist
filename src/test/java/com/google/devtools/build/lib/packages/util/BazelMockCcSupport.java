@@ -40,7 +40,7 @@ public final class BazelMockCcSupport extends MockCcSupport {
   private BazelMockCcSupport() {}
 
   private static final ImmutableList<String> CROSSTOOL_ARCHS =
-      ImmutableList.of("piii", "k8", "armeabi-v7a", "ppc");
+      ImmutableList.of("piii", "k8", "armeabi-v7a", "ppc", "mips64");
 
   protected static void createBasePackage(MockToolsConfig config) throws IOException {
     config.create(
@@ -91,6 +91,7 @@ public final class BazelMockCcSupport extends MockCcSupport {
         "      'armeabi-v7a': ':cc-compiler-armeabi-v7a',",
         "      'x64_windows': ':cc-compiler-x64_windows',",
         "      'ppc': ':cc-compiler-ppc',",
+	"      'mips64': ':cc-compiler-mips64',"
         "      'local|compiler': ':cc-compiler-local',",
         "      'k8|compiler': ':cc-compiler-k8',",
         "      'k8|compiler_no_dyn_linker': ':cc-no-dyn-linker-k8',",
@@ -160,6 +161,25 @@ public final class BazelMockCcSupport extends MockCcSupport {
         "    toolchain = ':cc-no-dyn-linker-k8',",
         "    toolchain_type = ':toolchain_type',",
         ")",
+        "cc_toolchain(name = 'cc-compiler-mips64', all_files = ':empty', compiler_files = ':empty',",
+        "    cpu = 'mips64',",
+        "    compiler = 'compiler',",
+        "    dwp_files = ':empty',",
+        "    dynamic_runtime_libs = [':empty'], ",
+        "    ar_files = ':empty', as_files = ':empty', linker_files = ':empty',",
+        "    module_map = 'crosstool.cppmap', supports_header_parsing = 1,",
+        "    objcopy_files = ':empty', static_runtime_libs = [':empty'], strip_files = ':empty',",
+        ")",
+        "toolchain(name = 'cc-toolchain-mips64',",
+         //Needs to be compatible with all execution environments for tests to work properly.
+        "    exec_compatible_with = [],",
+        "    target_compatible_with = [",
+        "        '@bazel_tools//platforms:mips64',",
+        "        '@bazel_tools//platforms:linux',",
+        "    ],",
+        "    toolchain = ':cc-compiler-mips64',",
+        "    toolchain_type = ':toolchain_type',",
+        ")",
         "cc_toolchain(name = 'cc-compiler-ppc', all_files = ':empty', compiler_files = ':empty',",
         "    cpu = 'ppc',",
         "    compiler = 'compiler',",
@@ -170,7 +190,7 @@ public final class BazelMockCcSupport extends MockCcSupport {
         "    objcopy_files = ':empty', static_runtime_libs = [':empty'], strip_files = ':empty',",
         ")",
         "toolchain(name = 'cc-toolchain-ppc',",
-        // Needs to be compatible with all execution environments for tests to work properly.
+         //Needs to be compatible with all execution environments for tests to work properly.
         "    exec_compatible_with = [],",
         "    target_compatible_with = [",
         "        '@bazel_tools//platforms:ppc',",

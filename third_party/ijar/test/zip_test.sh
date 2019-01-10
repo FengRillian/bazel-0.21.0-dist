@@ -80,8 +80,8 @@ function test_zipper() {
   # Test flatten option
   (cd ${TEST_TMPDIR}/test && $ZIPPER cf ${TEST_TMPDIR}/output.zip ${filelist})
   $ZIPPER v ${TEST_TMPDIR}/output.zip >$TEST_log
-  expect_log "^f .* file$"
-  expect_log "^f .* other_file$"
+  expect_log "file"
+  expect_log "other_file"
   expect_not_log "path"
   expect_not_log "/"
 
@@ -90,29 +90,9 @@ function test_zipper() {
   echo "abcdefghi" >${TEST_TMPDIR}/test.zip
   cat ${TEST_TMPDIR}/output.zip >>${TEST_TMPDIR}/test.zip
   $ZIPPER v ${TEST_TMPDIR}/test.zip >$TEST_log
-  expect_log "^f .* file$"
-  expect_log "^f .* other_file$"
+  expect_log "file"
+  expect_log "other_file"
   expect_not_log "path"
-}
-
-function test_zipper_junk_paths() {
-  mkdir -p ${TEST_TMPDIR}/test/path/to/some
-  mkdir -p ${TEST_TMPDIR}/test/some/other/path
-  touch ${TEST_TMPDIR}/test/path/to/some/empty_file
-  echo "toto" > ${TEST_TMPDIR}/test/path/to/some/file
-  echo "titi" > ${TEST_TMPDIR}/test/path/to/some/other_file
-  chmod +x ${TEST_TMPDIR}/test/path/to/some/other_file
-  echo "tata" > ${TEST_TMPDIR}/test/file
-  filelist="$(cd ${TEST_TMPDIR}/test && find . | sed 's|^./||' | grep -v '^.$')"
-
-  # Test extract + flatten option
-  (cd ${TEST_TMPDIR}/test && $ZIPPER c ${TEST_TMPDIR}/output.zip ${filelist})
-  $ZIPPER vf ${TEST_TMPDIR}/output.zip >$TEST_log
-  echo $TEST_log
-  expect_log "^f .* file$"
-  expect_log "^f .* other_file$"
-  expect_not_log "path"
-  expect_not_log "/"
 }
 
 function test_zipper_unzip_selective_files() {
@@ -186,29 +166,6 @@ function test_zipper_specify_path() {
   (cd ${TEST_TMPDIR}/out && $UNZIP -q ${TEST_TMPDIR}/output.zip)
   diff -r ${TEST_TMPDIR}/expect ${TEST_TMPDIR}/out &> $TEST_log \
       || fail "Unzip after zipper output is not expected"
-}
-
-function test_zipper_permissions() {
-  local -r LOCAL_TEST_DIR="${TEST_TMPDIR}/${FUNCNAME[0]}"
-  mkdir -p ${LOCAL_TEST_DIR}/files
-  printf "#!/bin/sh\nexit 0\n" > ${LOCAL_TEST_DIR}/files/executable
-  printf "#!/bin/sh\nexit 0\n" > ${LOCAL_TEST_DIR}/files/non_executable
-  chmod +x ${LOCAL_TEST_DIR}/files/executable
-  chmod -x ${LOCAL_TEST_DIR}/files/non_executable
-
-  ${ZIPPER} cC ${LOCAL_TEST_DIR}/output.zip \
-      executable=${LOCAL_TEST_DIR}/files/executable \
-      non_executable=${LOCAL_TEST_DIR}/files/non_executable
-
-  mkdir -p ${LOCAL_TEST_DIR}/out
-  cd ${LOCAL_TEST_DIR}/out && $UNZIP -q ${LOCAL_TEST_DIR}/output.zip
-
-  if ! test -x ${LOCAL_TEST_DIR}/out/executable; then
-    fail "out/executable should have been executable"
-  fi
-  if test -x ${LOCAL_TEST_DIR}/out/non_executable; then
-    fail "out/non_executable should not have been executable"
-  fi
 }
 
 run_suite "zipper tests"

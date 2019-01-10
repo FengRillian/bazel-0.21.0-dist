@@ -190,6 +190,8 @@ def get_cpu_value(repository_ctx):
         return "ppc"
     if result.stdout.strip() in ["arm", "armv7l"]:
         return "arm"
+    if result.stdout.strip() in ["mips64el", "mips64"]:
+        return "mips64"
     if result.stdout.strip() in ["aarch64"]:
         return "aarch64"
     return "k8" if result.stdout.strip() in ["amd64", "x86_64", "x64"] else "piii"

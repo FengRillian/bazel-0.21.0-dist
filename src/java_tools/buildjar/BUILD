@@ -78,8 +78,8 @@ java_toolchain(
         # Prevent "Could not reserve enough space for object heap" errors on Windows.
         "-Xmx512m",
         # Using tiered compilation improves performance of Javac when not using the worker mode.
-        "-XX:+TieredCompilation",
-        "-XX:TieredStopAtLevel=1",
+        #"-XX:+TieredCompilation",
+        #"-XX:TieredStopAtLevel=1",
     ],
     singlejar = ["//src/java_tools/singlejar:bootstrap_deploy.jar"],
     source_version = "8",

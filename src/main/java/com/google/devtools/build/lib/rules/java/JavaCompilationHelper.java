@@ -904,10 +904,10 @@ public final class JavaCompilationHelper {
       CustomCommandLine.Builder commandLine =
           CustomCommandLine.builder().addExecPath(inputJar).addExecPath(interfaceJar);
       if (targetLabel != null) {
-        commandLine.addLabel("--target_label", targetLabel);
+        //commandLine.addLabel("--target_label", targetLabel);
       }
       if (injectingRuleKind != null) {
-        commandLine.add("--injecting_rule_kind", injectingRuleKind);
+        //commandLine.add("--injecting_rule_kind", injectingRuleKind);
       }
       ruleContext.registerAction(
           new SpawnAction.Builder()

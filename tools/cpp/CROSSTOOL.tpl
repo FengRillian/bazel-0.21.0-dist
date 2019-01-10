@@ -16,6 +16,40 @@ major_version: "local"
 minor_version: ""
 
 # Android tooling requires a default toolchain for the armeabi-v7a cpu.
+
+toolchain {
+  abi_version: "mips64-loongson3a"
+  abi_libc_version: "mips64-loongson3a"
+  builtin_sysroot: ""
+  compiler: "compiler"
+  host_system_name: "mips64-loongson3a"
+  needsPic: true
+  supports_gold_linker: false
+  supports_incremental_linker: false
+  supports_fission: false
+  supports_interface_shared_objects: false
+  supports_normalizing_ar: false
+  supports_start_end_lib: false
+  target_libc: "mips64-loongson3a"
+  target_cpu: "mips64"
+  target_system_name: "mips64-loongson3a"
+  toolchain_identifier: "local_mips64"
+
+  tool_path { name: "ar" path: "/bin/false" }
+  tool_path { name: "compat-ld" path: "/bin/false" }
+  tool_path { name: "cpp" path: "/bin/false" }
+  tool_path { name: "dwp" path: "/bin/false" }
+  tool_path { name: "gcc" path: "/bin/false" }
+  tool_path { name: "gcov" path: "/bin/false" }
+  tool_path { name: "ld" path: "/bin/false" }
+
+  tool_path { name: "nm" path: "/bin/false" }
+  tool_path { name: "objcopy" path: "/bin/false" }
+  tool_path { name: "objdump" path: "/bin/false" }
+  tool_path { name: "strip" path: "/bin/false" }
+  linking_mode_flags { mode: DYNAMIC }
+}
+
 toolchain {
   abi_version: "armeabi-v7a"
   abi_libc_version: "armeabi-v7a"

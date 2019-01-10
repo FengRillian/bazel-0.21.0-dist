@@ -311,6 +311,7 @@ alias(
             "//src/conditions:windows": "@remotejdk_win//:jdk",
             "//src/conditions:linux_aarch64": "@remotejdk_linux_aarch64//:jdk",
             "//src/conditions:linux_x86_64": "@remotejdk_linux//:jdk",
+	    "//src/conditions:mips64": "@local_jdk//:jdk",
         },
         no_match_error = "Could not find a JDK for host execution environment, please explicitly" +
                          " provide one using `--host_javabase.`",
