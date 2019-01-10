@@ -1,0 +1,17 @@
+destination: production
+markdown: kramdown
+kramdown:
+  syntax_highlighter: rouge
+  toc_levels: "2,3"
+highlighter: rouge
+
+paginate: 10
+sass:
+  sass_dir: _sass
+gems: [jekyll-paginate]
+
+version: "master"
+
+main_site_url: https://www.bazel.build
+docs_site_url: "/"
+blog_site_url: https://blog.bazel.build

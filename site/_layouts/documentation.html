@@ -1,0 +1,292 @@
+---
+nav: docs
+---
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="https://schema.org/WebPage">
+  {% include head.html %}
+  <body>
+    {% include header.html %}
+
+    <div class="page-title-bar">
+      <div class="container">
+        <h1>Documentation</h1>
+      </div>
+    </div>
+
+    <div class="container vpad">
+      <div class="row">
+        <div class="col-md-3">
+          <a class="btn btn-default btn-lg btn-block sidebar-toggle"
+              data-toggle="collapse" href="#sidebar-nav" aria-expanded="false"
+              aria-controls="sidebar-nav">
+            <i class="glyphicon glyphicon-menu-hamburger"></i> Navigation
+          </a>
+          <nav class="sidebar collapse" id="sidebar-nav">
+           <h3>Home</h3>
+            <ul class="sidebar-nav">
+              <li><a href="/versions/{{ site.version }}/bazel-overview.html">Bazel Overview</a></li>
+              <li><a href="/versions/{{ site.version }}/bazel-vision.html">Bazel Vision</a></li>
+              <li><a href="/versions/{{ site.version }}/getting-started.html">Getting Started</a></li>
+              <li><a href="/versions/{{ site.version }}/skylark/backward-compatibility.html">Backward Compatibility</a></li>
+            </ul>
+
+           <h3>Using Bazel</h3>
+            <ul class="sidebar-nav">
+
+              <li>
+                <a class="sidebar-nav-heading" data-toggle="collapse"
+                    href="#installing-menu" aria-expanded="false"
+                    aria-controls="installing-menu">
+                  Installing Bazel<span class="caret"></span>
+                </a>
+                <ul class="collapse sidebar-nav sidebar-submenu" id="installing-menu">
+                   <li><a href="/versions/{{ site.version }}/install.html">Installation Overview</a></li>
+                   <li><a href="/versions/{{ site.version }}/install-ubuntu.html">Installing on Ubuntu</a></li>
+                   <li><a href="/versions/{{ site.version }}/install-redhat.html">Installing on Fedora/CentOS</a></li>
+                   <li><a href="/versions/{{ site.version }}/install-os-x.html">Installing on macOS</a></li>
+                   <li><a href="/versions/{{ site.version }}/install-windows.html">Installing on Windows</a></li>
+                   <li><a href="/versions/{{ site.version }}/install-compile-source.html">Compiling from Source</a></li>
+                   <li><a href="/versions/{{ site.version }}/completion.html">Command-Line Completion</a></li>
+                   <li><a href="/versions/{{ site.version }}/ide.html">Integrating with IDEs</a></li>
+                 </ul>
+                </li>
+
+              <li>
+                <a class="sidebar-nav-heading" data-toggle="collapse"
+                    href="#tutorials-menu" aria-expanded="false"
+                    aria-controls="tutorials-menu">
+                  Tutorials<span class="caret"></span>
+                </a>
+                <ul class="collapse sidebar-nav sidebar-submenu" id="tutorials-menu">
+                   <li><a href="/versions/{{ site.version }}/tutorial/java.html">Building a Java Project</a></li>
+                   <li><a href="/versions/{{ site.version }}/tutorial/cpp.html">Building a C++ Project</a></li>
+                   <li><a href="/versions/{{ site.version }}/tutorial/android-app.html">Building an Android App</a></li>
+                   <li><a href="/versions/{{ site.version }}/tutorial/ios-app.html">Building an iOS App</a></li>
+                   <li><a href="/versions/{{ site.version }}/skylark/tutorial-sharing-variables.html">Sharing Variables</a></li>
+                   <li><a href="/versions/{{ site.version }}/skylark/tutorial-creating-a-macro.html">Creating a Macro</a></li>
+                 </ul>
+              </li>
+
+              <li><a href="/versions/{{ site.version }}/build-ref.html">Bazel Concepts</a></li>
+              <li><a href="/versions/{{ site.version }}/guide.html">User's Guide</a></li>
+              <li><a href="/versions/{{ site.version }}/external.html">External Dependencies</a></li>
+
+              <li>
+                <a class="sidebar-nav-heading" data-toggle="collapse"
+                    href="#query-menu" aria-expanded="false"
+                    aria-controls="query-menu">
+                  Queries<span class="caret"></span>
+                </a>
+                <ul class="collapse sidebar-nav sidebar-submenu" id="query-menu">
+                  <li><a href="/versions/{{ site.version }}/query-how-to.html">Bazel query</a></li>
+                  <li><a href="/versions/{{ site.version }}/cquery.html">Bazel cquery</a></li>
+                  <li><a href="/versions/{{ site.version }}/user-manual.html#aquery">Bazel aquery</a></li>
+                  <li><a href="/versions/{{ site.version }}/query.html">Query Language</a></li>
+                </ul>
+              </li>
+
+              <li><a href="/versions/{{ site.version }}/configurable-attributes.html">Configurable Attributes</a></li>
+              <li><a href="/versions/{{ site.version }}/best-practices.html">Best Practices</a></li>
+              <li>
+                <a class="sidebar-nav-heading" data-toggle="collapse"
+                    href="#remote-execution-menu" aria-expanded="false"
+                    aria-controls="remote-execution-menu">
+                  Remote Execution<span class="caret"></span>
+                </a>
+                <ul class="collapse sidebar-nav sidebar-submenu" id="remote-execution-menu">
+                   <li><a href="/versions/{{ site.version }}/remote-execution.html">Remote Execution Overview</a></li>
+                   <li><a href="/versions/{{ site.version }}/remote-execution-rules.html">Guidelines for Remote Execution</a></li>
+                   <li>
+                      <a class="sidebar-nav-heading" data-toggle="collapse"
+                          href="#troubleshoot-remote-execution-menu" aria-expanded="false"
+                          aria-controls="troubleshoot-remote-execution-menu">
+                        Troubleshooting Remote Execution<span class="caret"></span>
+                      </a>
+                      <ul class="collapse sidebar-nav sidebar-submenu" id="troubleshoot-remote-execution-menu">
+                         <li><a href="/versions/{{ site.version }}/remote-execution-sandbox.html">Troubleshooting Remote Execution with Bazel Sandbox</a></li>
+                         <li><a href="/versions/{{ site.version }}/workspace-log.html">Finding non-hermetic behavior in WORKSPACE rules</a></li>
+                         <li><a href="/versions/{{ site.version }}/remote-execution-caching-debug.html">Debugging Remote Cache Hit Rate</a></li>
+                      </ul>
+                  </li>
+                   <li><a href="/versions/{{ site.version }}/remote-execution-ci.html">Configuring Bazel CI for Remote Execution Rule Testing</a></li>
+                 </ul>
+              </li>
+
+              <li>
+                  <a class="sidebar-nav-heading" data-toggle="collapse"
+                      href="#remote-caching-menu" aria-expanded="false"
+                      aria-controls="remote-caching-menu">
+                    Remote Caching<span class="caret"></span>
+                  </a>
+                  <ul class="collapse sidebar-nav sidebar-submenu" id="remote-caching-menu">
+                     <li><a href="/versions/{{ site.version }}/remote-caching.html">Remote Caching Overview</a></li>
+                     <li><a href="/versions/{{ site.version }}/remote-caching-debug.html">Debugging Remote Cache Hit Rate for Local Execution</a></li>
+                  </ul>
+              </li>
+             </ul>
+
+           <h3>Rules</h3>
+           <ul class="sidebar-nav">
+             <li><a href="/versions/{{ site.version }}/be/overview.html">Build Encyclopedia</a></li>
+
+              <li>
+                <a class="sidebar-nav-heading" data-toggle="collapse"
+                    href="#android-menu" aria-expanded="false"
+                    aria-controls="android-menu">
+                  Android<span class="caret"></span>
+                </a>
+                <ul class="collapse sidebar-nav sidebar-submenu" id="android-menu">
+                  <li><a href="/versions/{{ site.version }}/bazel-and-android.html">Android Resources</a></li>
+                  <li><a href="/versions/{{ site.version }}/mobile-install.html">Using mobile-install</a></li>
+                  <li><a href="/versions/{{ site.version }}/android-instrumentation-test.html">Android Instrumentation Tests</a></li>
+                  <li><a href="/versions/{{ site.version }}/android-ndk.html">Android NDK</a></li>
+                  <li><a href="https://plugins.jetbrains.com/plugin/9185-bazel">Android Studio Plugin</a></li>
+                </ul>
+              </li>
+
+               <li>
+                <a class="sidebar-nav-heading" data-toggle="collapse"
+                    href="#apple-menu" aria-expanded="false"
+                    aria-controls="apple-menu">
+                  Apple<span class="caret"></span>
+                </a>
+                <ul class="collapse sidebar-nav sidebar-submenu" id="apple-menu">
+                  <li><a href="/versions/{{ site.version }}/bazel-and-apple.html">Apple Resources</a></li>
+                  <li><a href="/versions/{{ site.version }}/migrate-xcode.html">Migrating from Xcode</a></li>
+                  <li><a href="/versions/{{ site.version }}/migrate-cocoapods.html">Converting CocoaPods</a></li>
+                </ul>
+              </li>
+
+              <li>
+                <a class="sidebar-nav-heading" data-toggle="collapse"
+                    href="#cpp-menu" aria-expanded="false"
+                    aria-controls="cpp-menu">
+                  C++<span class="caret"></span>
+                </a>
+                <ul class="collapse sidebar-nav sidebar-submenu" id="cpp-menu">
+                  <li><a href="/versions/{{ site.version }}/bazel-and-cpp.html">C++ Resources</a></li>
+                  <li><a href="/versions/{{ site.version }}/cpp-use-cases.html">C++ Use Cases</a></li>
+                  <li><a href="/versions/{{ site.version }}/crosstool-reference.html">Understanding CROSSTOOL</a></li>
+                  <li><a href="/versions/{{ site.version }}/tutorial/crosstool.html">Tutorial: CROSSTOOL</a></li>
+                </ul>
+              </li>
+
+              <li>
+                <a class="sidebar-nav-heading" data-toggle="collapse"
+                    href="#java-menu" aria-expanded="false"
+                    aria-controls="java-menu">
+                  Java<span class="caret"></span>
+                </a>
+                <ul class="collapse sidebar-nav sidebar-submenu" id="java-menu">
+                  <li><a href="/versions/{{ site.version }}/bazel-and-java.html">Java Resources</a></li>
+                  <li><a href="/versions/{{ site.version }}/migrate-maven.html">Migrating from Maven</a></li>
+                  <li><a href="/versions/{{ site.version }}/generate-workspace.html">Converting Maven Dependencies</a></li>
+                </ul>
+              </li>
+
+              <li>
+                <a class="sidebar-nav-heading" data-toggle="collapse"
+                    href="#javascript-menu" aria-expanded="false"
+                    aria-controls="javascript-menu">
+                  JavaScript<span class="caret"></span>
+                </a>
+                <ul class="collapse sidebar-nav sidebar-submenu" id="javascript-menu">
+                  <li><a href="/versions/{{ site.version }}/bazel-and-javascript.html">JavaScript Resources</a></li>
+                  <li><a href="/versions/{{ site.version }}/build-javascript.html">Building JavaScript</a></li>
+                </ul>
+              </li>
+
+           </ul>
+
+           <h3>Reference</h3>
+           <ul class="sidebar-nav">
+             <li><a href="/versions/{{ site.version }}/user-manual.html">Commands and Options</a></li>
+             <li><a href="/versions/{{ site.version }}/skylark/build-style.html">BUILD Style Guide</a></li>
+             <li><a href="/versions/{{ site.version }}/command-line-reference.html">Command Line Reference</a></li>
+             <li><a href="/versions/{{ site.version }}/test-encyclopedia.html">Writing Tests</a></li>
+             <li><a href="/versions/{{ site.version }}/build-event-protocol.html">Build Event Protocol</a></li>
+             <li><a href="/versions/{{ site.version }}/output_directories.html">Output Directory Layout</a></li>
+             <li><a href="/versions/{{ site.version }}/platforms.html">Platforms</a></li>
+             <li><a href="/versions/{{ site.version }}/toolchains.html">Toolchains</a></li>
+           </ul>
+
+            <h3>Extending Bazel</h3>
+           <ul class="sidebar-nav">
+              <li><a href="/versions/{{ site.version }}/skylark/concepts.html">Extension Overview</a></li>
+
+              <li>
+                <a class="sidebar-nav-heading" data-toggle="collapse"
+                    href="#starlark-concepts" aria-expanded="false"
+                    aria-controls="starlark-concepts">
+                  Concepts<span class="caret"></span>
+                </a>
+                <ul class="collapse sidebar-nav sidebar-submenu" id="starlark-concepts">
+                  <li><a href="/versions/{{ site.version }}/skylark/macros.html">Macros</a></li>
+                  <li><a href="/versions/{{ site.version }}/skylark/rules.html">Rules</a></li>
+                  <li><a href="/versions/{{ site.version }}/skylark/depsets.html">Depsets</a></li>
+                  <li><a href="/versions/{{ site.version }}/skylark/aspects.html">Aspects</a></li>
+                  <li><a href="/versions/{{ site.version }}/skylark/repository_rules.html">Repository Rules</a></li>
+                  <li><a href="/versions/{{ site.version }}/skylark/faq.html">FAQ</a></li>
+                </ul>
+              </li>
+
+              <li>
+                <a class="sidebar-nav-heading" data-toggle="collapse"
+                    href="#starlark-practices" aria-expanded="false"
+                    aria-controls="starlark-practices">
+                  Best Practices<span class="caret"></span>
+                </a>
+                <ul class="collapse sidebar-nav sidebar-submenu" id="starlark-practices">
+                  <li><a href="/versions/{{ site.version }}/skylark/bzl-style.html">.bzl Style Guide</a></li>
+                  <li><a href="/versions/{{ site.version }}/skylark/testing.html">Testing</a></li>
+                  <li><a href="https://skydoc.bazel.build" target="_blank">Documenting Rules</a></li>
+                  <li><a href="/versions/{{ site.version }}/skylark/skylint.html">Linter</a></li>
+                  <li><a href="/versions/{{ site.version }}/skylark/performance.html">Optimizing Performance</a></li>
+                  <li><a href="/versions/{{ site.version }}/skylark/deploying.html">Deploying Rules</a></li>
+                </ul>
+              </li>
+
+              <li><a href="https://github.com/bazelbuild/examples/tree/master/rules">Examples</a></li>
+              <li><a href="/versions/{{ site.version }}/skylark/lib/skylark-overview.html">API Reference</a></li>
+              <li><a href="/versions/{{ site.version }}/skylark/language.html">Starlark Language</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="col-md-9">
+          <a id="gh-edit" class="gh-edit default-hidden"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+          <script>
+            var versionDocsURLRegex = /\/versions\/[\w\.]+\/(.*)/;
+            var ghDocsBazeURL = 'https://github.com/bazelbuild/bazel/tree/master/site/docs/';
+            var editButton = document.getElementById('gh-edit');
+            // if there is an edit button and we are not in the Build Encyclopedia
+            if (editButton
+                && window.location.pathname.match(versionDocsURLRegex)
+                && window.location.pathname.lastIndexOf('/be/') == -1
+                && window.location.pathname.lastIndexOf('/skylark/lib/') == -1) {
+              var docFile = window.location.pathname.match(versionDocsURLRegex)[1];
+              // some pages are not using markdown :(
+              if (docFile !== 'user-manual.html'
+                  && docFile !== 'build-ref.html'
+                  && docFile !== 'query.html'
+                  && docFile !== 'test-encyclopedia.html') {
+                docFile = docFile.replace('html', 'md');
+              }
+              editButton.href = ghDocsBazeURL + docFile;
+              editButton.style.visibility = 'visible';
+            }
+          </script>
+
+          {{ content }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Satisfaction Survey -->
+    <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=oohdpic4fyfp3jcnym6aqkdf3e"></script>
+
+    {% include footer.html %}
+  </body>
+</html>
+
