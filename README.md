@@ -20,6 +20,9 @@ Build and test software of any size, quickly and reliably.
 * **Extensible to your needs**: Easily add support for new languages and
   platforms with Bazel's familiar extension language. Share and re-use language
   rules written by the growing Bazel community.
+## Prepare on loongson3a
+  * sudo yum -y install gcc-c++
+  * download jdk8 and set JAVA_HOME CLASSPATH
 
 ## Getting Started
 
